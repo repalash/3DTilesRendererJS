@@ -1,4 +1,5 @@
 import { TilesRenderer } from '3d-tiles-renderer';
+import { TilesFadePlugin } from '3d-tiles-renderer/plugins';
 import {
 	Scene,
 	DirectionalLight,
@@ -205,6 +206,7 @@ function initTiles() {
 
 	const url = window.location.hash.replace( /^#/, '' ) || '../data/tileset.json';
 	tiles = new TilesRenderer( url );
+	tiles.registerPlugin( new TilesFadePlugin() );
 	tiles.errorTarget = 2;
 	tiles.addEventListener( 'load-model', onLoadModel );
 	tiles.addEventListener( 'dispose-model', onDisposeModel );
