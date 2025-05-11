@@ -305,7 +305,7 @@ export class EnvironmentControls extends EventDispatcher {
 					pivotMesh.position.copy( hit.point );
 					pivotMesh.visible = pointerTracker.isPointerTouch() ? false : enabled;
 					pivotMesh.updateMatrixWorld();
-					scene.add( pivotMesh );
+					scene && scene.add( pivotMesh );
 
 				} else if ( pointerTracker.isLeftClicked() ) {
 
@@ -315,7 +315,7 @@ export class EnvironmentControls extends EventDispatcher {
 
 					pivotMesh.position.copy( hit.point );
 					pivotMesh.updateMatrixWorld();
-					scene.add( pivotMesh );
+					scene && scene.add( pivotMesh );
 
 				}
 
@@ -1385,7 +1385,7 @@ export class EnvironmentControls extends EventDispatcher {
 	_raycast( raycaster ) {
 
 		const { scene, useFallbackPlane, fallbackPlane } = this;
-		const result = raycaster.intersectObject( scene )[ 0 ] || null;
+		const result = scene ? raycaster.intersectObject( scene )[ 0 ] || null : null;
 		if ( result ) {
 
 			return result;
